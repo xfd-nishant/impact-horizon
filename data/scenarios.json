@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "title": "Factory near river",
+    "summary": "A mid-sized factory proposes to open 2km from the village river. Community split between jobs and environmental risk.",
+    "population": 8000,
+    "baseline_jobs": 120,
+    "hidden_actuals": { "env": 3, "econ": 8, "social": 4 },
+    "personaGoals": {
+      "CEO": "Create jobs and profit",
+      "Villager": "Protect health and water",
+      "Mayor": "Balance jobs and votes"
+    }
+  },
+  {
+    "id": "2",
+    "title": "Solar farm on farmland",
+    "summary": "A solar developer wants to repurpose farmland for a solar farm. Farmers worry about lost grazing area.",
+    "population": 4500,
+    "baseline_jobs": 80,
+    "hidden_actuals": { "env": 8, "econ": 5, "social": 6 },
+    "personaGoals": {
+      "Developer": "Renewable energy and ROI",
+      "Farmer": "Preserve land and livelihoods",
+      "Local NGO": "Maximize biodiversity"
+    }
+  }
+]
