@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Full-height app */
+html,body,#__next { height: 100%; }
+
+/* Dark green minimal game theme */
+body { @apply bg-emerald-950 text-emerald-100 antialiased; }
+
+/* Subtle grid surface for game-like background */
+:root { --grid-color: rgba(16,185,129,0.08); }
+.game-surface {
+  background-image:
+    linear-gradient(transparent 0, transparent calc(100% - 1px), var(--grid-color) calc(100% - 1px)),
+    linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), var(--grid-color) calc(100% - 1px));
+  background-size: 32px 32px;
+  background-position: center;
+}
+
+/* Text selection */
+::selection { background: rgba(16,185,129,0.35); color: #ecfdf5; }
