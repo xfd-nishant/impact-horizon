@@ -1,22 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Full-height app */
-html,body,#__next { height: 100%; }
+/* Global nature-themed styling */
+html, body, #__next { 
+  height: 100%; 
+}
 
-/* Dark green minimal game theme */
-body { @apply bg-emerald-950 text-emerald-100 antialiased; }
+body { 
+  @apply bg-forest-950 text-forest-100 font-body;
+}
 
-/* Subtle grid surface for game-like background */
-:root { --grid-color: rgba(16,185,129,0.08); }
+/* Nature-themed scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-forest-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-forest-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-forest-500;
+}
+
+/* Floating nature elements */
+.nature-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(54, 156, 54, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(184, 145, 74, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-forest-700;
+  background: #4a6b4a;
+  color: #f0f4f0;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 border border-forest-600 hover:bg-forest-800;
+  background: transparent;
+  color: #a8b5a8;
+}
+
+/* Card styles */
+.card {
+  @apply bg-forest-900/80 border border-forest-700 rounded-lg shadow-lg transition-all duration-200 hover:border-forest-600;
+}
+
+/* Loading animation styles */
+.loading-leaf {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #369c36, #2a7d2a);
+  border-radius: 0 100% 0 100%;
+  animation: leaf-fall 2s ease-in-out infinite;
+}
+
+/* Stakeholder avatar styles */
+.stakeholder-avatar {
+  @apply w-16 h-16 rounded-full border-4 border-white shadow-lg transition-all duration-300 hover:scale-110;
+  background: linear-gradient(135deg, #369c36 0%, #2a7d2a 100%);
+}
+
+/* Text effects */
+.text-glow {
+  text-shadow: 0 0 10px rgba(54, 156, 54, 0.5);
+}
+
+.text-earth-glow {
+  text-shadow: 0 0 10px rgba(184, 145, 74, 0.5);
+}
+
+.text-water-glow {
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+}
+
+/* Legacy game surface for compatibility */
 .game-surface {
-  background-image:
-    linear-gradient(transparent 0, transparent calc(100% - 1px), var(--grid-color) calc(100% - 1px)),
-    linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), var(--grid-color) calc(100% - 1px));
-  background-size: 32px 32px;
-  background-position: center;
+  background: linear-gradient(135deg, #f0f9f0 0%, #dcf2dc 50%, #bce5bc 100%);
+  background-attachment: fixed;
 }
 
 /* Text selection */
-::selection { background: rgba(16,185,129,0.35); color: #ecfdf5; }
+::selection { background: rgba(54, 156, 54, 0.35); color: #f0f9f0; }
