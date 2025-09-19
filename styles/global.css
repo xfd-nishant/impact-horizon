@@ -1,7 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* small helper */
-html,body,#__next { height: 100%; }
-body { @apply bg-gray-50 text-gray-900; }
+/* Global nature-themed styling */
+html, body, #__next { 
+  height: 100%; 
+}
+
+body { 
+  @apply bg-nature-gradient text-forest-900 font-body;
+  background-attachment: fixed;
+}
+
+/* Nature-themed scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-forest-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-forest-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-forest-500;
+}
+
+/* Floating nature elements */
+.nature-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(54, 156, 54, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(184, 145, 74, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Custom button styles */
+.btn-nature {
+  @apply px-6 py-3 rounded-xl font-display font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95;
+  background: linear-gradient(135deg, #369c36 0%, #2a7d2a 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(54, 156, 54, 0.3);
+}
+
+.btn-nature:hover {
+  box-shadow: 0 6px 20px rgba(54, 156, 54, 0.4);
+}
+
+.btn-earth {
+  @apply px-6 py-3 rounded-xl font-display font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95;
+  background: linear-gradient(135deg, #b8914a 0%, #8a6535 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(184, 145, 74, 0.3);
+}
+
+.btn-water {
+  @apply px-6 py-3 rounded-xl font-display font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+/* Card styles */
+.nature-card {
+  @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-forest-200/50 transition-all duration-300 hover:shadow-2xl hover:border-forest-300/50;
+}
+
+/* Loading animation styles */
+.loading-leaf {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #369c36, #2a7d2a);
+  border-radius: 0 100% 0 100%;
+  animation: leaf-fall 2s ease-in-out infinite;
+}
+
+/* Stakeholder avatar styles */
+.stakeholder-avatar {
+  @apply w-16 h-16 rounded-full border-4 border-white shadow-lg transition-all duration-300 hover:scale-110;
+  background: linear-gradient(135deg, #369c36 0%, #2a7d2a 100%);
+}
+
+/* Text effects */
+.text-glow {
+  text-shadow: 0 0 10px rgba(54, 156, 54, 0.5);
+}
+
+.text-earth-glow {
+  text-shadow: 0 0 10px rgba(184, 145, 74, 0.5);
+}
+
+.text-water-glow {
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+}
