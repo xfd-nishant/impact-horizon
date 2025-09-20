@@ -1,0 +1,30 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="earthGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16a34a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#15803d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Earth circle -->
+  <circle cx="32" cy="32" r="28" fill="url(#earthGradient)"/>
+  
+  <!-- Continents -->
+  <path d="M20,20 Q25,15 30,20 Q35,25 40,20 Q45,15 50,20 Q48,25 45,30 Q40,35 35,30 Q30,25 25,30 Q20,25 20,20" fill="#15803d"/>
+  <path d="M15,35 Q20,30 25,35 Q30,40 35,35 Q40,30 45,35 Q42,40 38,45 Q35,50 30,45 Q25,40 20,45 Q15,40 15,35" fill="#15803d"/>
+  
+  <!-- Water areas -->
+  <circle cx="25" cy="25" r="8" fill="url(#waterGradient)" opacity="0.6"/>
+  <circle cx="45" cy="45" r="6" fill="url(#waterGradient)" opacity="0.6"/>
+  
+  <!-- Environmental elements -->
+  <circle cx="20" cy="20" r="2" fill="#22c55e"/>
+  <circle cx="45" cy="25" r="2" fill="#22c55e"/>
+  <circle cx="30" cy="45" r="2" fill="#22c55e"/>
+  <circle cx="50" cy="40" r="2" fill="#22c55e"/>
+</svg>

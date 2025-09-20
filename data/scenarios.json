@@ -4,13 +4,41 @@
     "title": "Factory near river",
     "summary": "A mid-sized factory proposes to open 2km from the village river. Community split between jobs and environmental risk.",
     "population": 8000,
-    "baseline_jobs": 120
+    "baseline_jobs": 120,
+    "background": "forest-scene",
+    "personaGoals": {
+      "Environmental Scientist": "Protect water quality and local ecosystem",
+      "Factory Manager": "Create jobs and economic growth",
+      "Local Resident": "Maintain quality of life and property values",
+      "Mayor": "Balance economic development with environmental protection"
+    }
   },
   {
     "id": "2",
     "title": "Solar farm on farmland",
     "summary": "A solar developer wants to repurpose farmland for a solar farm. Farmers worry about lost grazing area.",
     "population": 4500,
-    "baseline_jobs": 80
+    "baseline_jobs": 80,
+    "background": "coastal-scene",
+    "personaGoals": {
+      "Solar Developer": "Maximize renewable energy production",
+      "Local Farmer": "Preserve agricultural land and income",
+      "Environmental Activist": "Promote clean energy transition",
+      "County Commissioner": "Support sustainable development"
+    }
+  },
+  {
+    "id": "3",
+    "title": "Urban green space development",
+    "summary": "City plans to convert industrial wasteland into public park. Developers want mixed-use development instead.",
+    "population": 25000,
+    "baseline_jobs": 200,
+    "background": "urban-scene",
+    "personaGoals": {
+      "City Planner": "Create accessible green space for residents",
+      "Real Estate Developer": "Maximize property value and tax revenue",
+      "Community Organizer": "Ensure affordable housing and community benefits",
+      "Environmental Engineer": "Restore contaminated land safely"
+    }
   }
 ]
