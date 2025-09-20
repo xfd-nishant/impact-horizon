@@ -10,7 +10,11 @@ html, body, #__next {
 }
 
 body { 
-  @apply bg-forest-950 text-forest-100 font-body;
+  @apply bg-forest-950 text-forest-50 font-body;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
 }
 
 /* Nature-themed scrollbar */
@@ -39,29 +43,92 @@ body {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(54, 156, 54, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(184, 145, 74, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
 
+/* Animated background particles */
+.particle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 50%;
+  animation: float-particle 20s infinite linear;
+}
+
+.particle:nth-child(2n) {
+  background: rgba(59, 130, 246, 0.1);
+  animation-duration: 25s;
+}
+
+.particle:nth-child(3n) {
+  background: rgba(168, 85, 247, 0.1);
+  animation-duration: 30s;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 /* Custom button styles */
 .btn-primary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-forest-700;
-  background: #4a6b4a;
-  color: #f0f4f0;
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 border border-forest-600 hover:bg-forest-800;
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 border-2 hover:scale-105 hover:shadow-lg;
   background: transparent;
-  color: #a8b5a8;
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.btn-secondary:hover {
+  background: rgba(34, 197, 94, 0.1);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
 }
 
 /* Card styles */
 .card {
-  @apply bg-forest-900/80 border border-forest-700 rounded-lg shadow-lg transition-all duration-200 hover:border-forest-600;
+  @apply bg-forest-900/90 border border-forest-600 rounded-xl shadow-xl transition-all duration-300 hover:border-forest-500 hover:shadow-2xl;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+}
+
+.card:hover {
+  transform: translateY(-2px);
 }
 
 /* Loading animation styles */
@@ -99,4 +166,60 @@ body {
 }
 
 /* Text selection */
-::selection { background: rgba(54, 156, 54, 0.35); color: #f0f9f0; }
+::selection { background: rgba(34, 197, 94, 0.35); color: #ffffff; }
+
+/* Nature-themed animations */
+.nature-float {
+  animation: nature-float 6s ease-in-out infinite;
+}
+
+.nature-pulse {
+  animation: nature-pulse 2s ease-in-out infinite;
+}
+
+.nature-glow {
+  animation: nature-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes nature-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(1deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes nature-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes nature-glow {
+  0% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.3); }
+  100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 0 30px rgba(34, 197, 94, 0.3); }
+}
+
+/* Typewriter effect */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #22c55e;
+  white-space: nowrap;
+  animation: typewriter-blink 1s infinite;
+}
+
+@keyframes typewriter-blink {
+  0%, 50% { border-color: #22c55e; }
+  51%, 100% { border-color: transparent; }
+}
+
+/* Enhanced text effects */
+.text-nature-glow {
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.text-water-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.text-earth-glow {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+}
