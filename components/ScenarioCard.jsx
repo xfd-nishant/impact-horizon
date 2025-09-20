@@ -80,6 +80,12 @@ export default function ScenarioCard({ scenario }) {
               <div className="w-2 h-2 bg-forest-400 rounded-full nature-pulse" style={{ animationDelay: '0.5s' }}></div>
               <span className="text-forest-300">Jobs: {scenario.baseline_jobs}</span>
             </div>
+            {scenario.budget && (
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-forest-600 rounded-full nature-pulse" style={{ animationDelay: '1s' }}></div>
+                <span className="text-forest-300">Budget: ${(scenario.budget / 1000000).toFixed(1)}M</span>
+              </div>
+            )}
           </div>
           <motion.span 
             className="text-forest-500 group-hover:text-forest-400 transition-colors text-2xl"

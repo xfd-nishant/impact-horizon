@@ -1,12 +1,37 @@
 import scenarios from "../data/scenarios.json";
 import ScenarioCard from "./ScenarioCard";
+import LockedScenarioCard from "./LockedScenarioCard";
 import NatureSprite from "./NatureSprite";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingScreen from "./LoadingScreen";
 
 export default function ScenarioDashboard() {
   const [isLoading, setIsLoading] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+
+  // Split scenarios into sections of 3
+  const unlockedScenarios = scenarios.filter(s => s.unlocked);
+  const lockedScenarios = scenarios.filter(s => !s.unlocked);
+  const allScenarios = [...unlockedScenarios, ...lockedScenarios];
+  const sections = [];
+  for (let i = 0; i < allScenarios.length; i += 3) {
+    sections.push(allScenarios.slice(i, i + 3));
+  }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'ArrowLeft') {
+        setCurrentSection(Math.max(0, currentSection - 1));
+      } else if (e.key === 'ArrowRight') {
+        setCurrentSection(Math.min(sections.length - 1, currentSection + 1));
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentSection, sections.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,8 +98,8 @@ export default function ScenarioDashboard() {
             variants={titleVariants}
           >
             <div className="max-w-6xl mx-auto px-8 text-center">
-              <h1 className="text-4xl font-display font-bold text-forest-100 mb-4 text-nature-glow">
-                Select Scenario
+              <h1 className="text-4xl font-display font-bold text-forest-100 mb-4 text-cyber-glow">
+                SELECT SCENARIO
               </h1>
               <p className="text-lg text-forest-200 max-w-2xl mx-auto">
                 Choose an environmental scenario to explore complex decision-making challenges.
@@ -89,7 +114,7 @@ export default function ScenarioDashboard() {
             </div>
           </motion.header>
 
-          {/* Scenarios Grid */}
+          {/* Scenarios Carousel */}
           <motion.section 
             className="max-w-7xl mx-auto px-8 py-16"
             initial={{ opacity: 0, y: 30 }}
@@ -97,30 +122,93 @@ export default function ScenarioDashboard() {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold text-forest-100 mb-4 text-nature-glow">
-                Available Simulations
+              <h2 className="text-3xl font-display font-bold text-forest-100 mb-4 text-cyber-glow">
+                ENVIRONMENTAL SIMULATIONS
               </h2>
               <p className="text-lg text-forest-200 font-nature max-w-2xl mx-auto">
-                Select a scenario to begin your journey into complex environmental decision-making
+                Navigate through complex environmental decision-making scenarios
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {scenarios.map((scenario, index) => (
-                <motion.div
-                  key={scenario.id}
-                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 0.5 + index * 0.1,
-                    type: "spring",
-                    stiffness: 100
-                  }}
+            {/* Section Navigation */}
+            <div className="flex justify-center mb-8">
+              <div className="flex space-x-2">
+                {sections.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSection(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentSection === index 
+                        ? 'bg-forest-400 scale-125' 
+                        : 'bg-forest-600 hover:bg-forest-500'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Horizontal Scrolling Container */}
+            <div className="relative">
+              <div className="overflow-hidden">
+                <motion.div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSection * 100}%)` }}
                 >
-                  <ScenarioCard scenario={scenario} />
+                  {sections.map((section, sectionIndex) => (
+                    <div key={sectionIndex} className="w-full flex-shrink-0">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                        {section.map((scenario, index) => (
+                          <motion.div
+                            key={scenario.id}
+                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ 
+                              duration: 0.6, 
+                              delay: 0.5 + index * 0.1,
+                              type: "spring",
+                              stiffness: 100
+                            }}
+                          >
+                            {scenario.unlocked ? (
+                              <ScenarioCard scenario={scenario} />
+                            ) : (
+                              <LockedScenarioCard scenario={scenario} />
+                            )}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </motion.div>
-              ))}
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setCurrentSection(Math.max(0, currentSection - 1))}
+                disabled={currentSection === 0}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-forest-800/80 hover:bg-forest-700/80 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <svg className="w-6 h-6 text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={() => setCurrentSection(Math.min(sections.length - 1, currentSection + 1))}
+                disabled={currentSection === sections.length - 1}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-forest-800/80 hover:bg-forest-700/80 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <svg className="w-6 h-6 text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Section Info */}
+            <div className="text-center mt-8">
+              <p className="text-forest-400 text-sm font-mono">
+                Section {currentSection + 1} of {sections.length} • {unlockedScenarios.length} unlocked scenarios
+              </p>
             </div>
           </motion.section>
 

@@ -22,7 +22,7 @@ export default function BriefingPage() {
   return (
     <>
       <Head>
-        <title>{scenario.title} - Briefing • Impact Sandbox</title>
+        <title>{scenario.title} - Briefing • Impact Horizon</title>
       </Head>
       <ScenarioBriefing scenario={scenario} />
     </>

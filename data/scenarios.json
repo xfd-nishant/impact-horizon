@@ -1,31 +1,157 @@
 [
   {
     "id": "1",
-    "title": "Factory near river",
-    "summary": "A mid-sized factory proposes to open 2km from the village river. Community split between jobs and environmental risk.",
-    "population": 8000,
-    "baseline_jobs": 120,
-    "background": "forest-scene",
+    "title": "Greenhaven: Heat & Flood Challenge",
+    "summary": "Greenhaven is facing hotter summers and increasingly severe storm floods. As the city's decision-maker, you must allocate limited resources to redevelop two vulnerable neighborhoods while balancing costs, equity, and stakeholder satisfaction.",
+    "population": 45000,
+    "baseline_jobs": 1200,
+    "background": "urban-scene",
+    "unlocked": true,
+    "budget": 5000000,
+    "neighborhoods": {
+      "Downtown": {
+        "floodRisk": "High",
+        "heatIndex": "35°C",
+        "vulnerablePopulation": 20
+      },
+      "Riverside": {
+        "floodRisk": "Medium", 
+        "heatIndex": "33°C",
+        "vulnerablePopulation": 40
+      }
+    },
+    "interventions": {
+      "Green Roofs": {
+        "cost": 2000000,
+        "heatReduction": 0.5,
+        "floodRiskReduction": 5,
+        "maintenance": 20000,
+        "equityImpact": "Medium"
+      },
+      "Rain Gardens": {
+        "cost": 1000000,
+        "heatReduction": 0.2,
+        "floodRiskReduction": 15,
+        "maintenance": 10000,
+        "equityImpact": "High"
+      },
+      "Shade Trees": {
+        "cost": 500000,
+        "heatReduction": 1,
+        "floodRiskReduction": 2,
+        "maintenance": 5000,
+        "equityImpact": "High"
+      },
+      "Permeable Pavement": {
+        "cost": 1500000,
+        "heatReduction": 0.3,
+        "floodRiskReduction": 10,
+        "maintenance": 15000,
+        "equityImpact": "Medium"
+      },
+      "Storm Drains": {
+        "cost": 3000000,
+        "heatReduction": 0,
+        "floodRiskReduction": 25,
+        "maintenance": 25000,
+        "equityImpact": "Low"
+      },
+      "Concrete Channels": {
+        "cost": 4000000,
+        "heatReduction": 0,
+        "floodRiskReduction": 30,
+        "maintenance": 30000,
+        "equityImpact": "Low"
+      }
+    },
     "personaGoals": {
-      "Environmental Scientist": "Protect water quality and local ecosystem",
-      "Factory Manager": "Create jobs and economic growth",
-      "Local Resident": "Maintain quality of life and property values",
-      "Mayor": "Balance economic development with environmental protection"
-    }
+      "City Council": "Oversees city planning, cares about efficiency & budget",
+      "Residents' Representative": "Advocates for vulnerable populations",
+      "Urban Developers": "Manages construction feasibility",
+      "Environmental NGO": "Promotes ecological sustainability",
+      "Local Businesses": "Concerned with access & revenue"
+    },
+    "briefing": "Welcome to Greenhaven. Two neighborhoods—Downtown and Riverside—are under pressure from rising temperatures and storm flood risks. Riverside has a higher proportion of vulnerable residents, while Downtown hosts dense businesses and offices.\n\nYou have a budget of $5M to implement interventions such as green roofs, rain gardens, shade trees, permeable pavements, or grey infrastructure like storm drains and concrete channels.\n\nYour decisions will affect heat reduction, flood mitigation, equity, and stakeholder satisfaction. No solution is perfect—every choice has trade-offs, and consequences unfold over time.\n\nYour task: allocate interventions, respond to stakeholder feedback, and maintain your city's credibility. Make the right call."
   },
   {
     "id": "2",
-    "title": "Solar farm on farmland",
-    "summary": "A solar developer wants to repurpose farmland for a solar farm. Farmers worry about lost grazing area.",
-    "population": 4500,
-    "baseline_jobs": 80,
+    "title": "Solar Fields or Food Fields?",
+    "summary": "The city of Sunhaven is under pressure to expand renewable energy. A major developer proposes a 400-acre solar farm on prime agricultural land outside the city. While this could power thousands of homes and slash emissions, farmers and food security advocates warn that sacrificing farmland will raise food prices and erode rural livelihoods.",
+    "population": 25000,
+    "baseline_jobs": 500,
     "background": "coastal-scene",
+    "unlocked": true,
+    "budget": 10000000,
+    "neighborhoods": {
+      "Agricultural Zone": {
+        "energyNeed": "150 MW shortfall",
+        "landValue": "$3M annually",
+        "foodOutput": "50,000 people"
+      },
+      "Urban Core": {
+        "energyNeed": "80 MW current",
+        "rooftopPotential": "High",
+        "populationGrowth": "+15% in 10 years"
+      },
+      "Brownfield Sites": {
+        "energyNeed": "60 MW potential",
+        "cleanupRequired": "2 years delay",
+        "environmentalRisk": "Medium"
+      }
+    },
+    "interventions": {
+      "Solar Farm (400 acres)": {
+        "cost": 8000000,
+        "energyOutput": 120,
+        "jobsCreated": 200,
+        "landImpact": "High",
+        "foodSecurityImpact": "High"
+      },
+      "Rooftop Panels Program": {
+        "cost": 10000000,
+        "energyOutput": 80,
+        "jobsCreated": 500,
+        "landImpact": "None",
+        "foodSecurityImpact": "None"
+      },
+      "Brownfield Solar": {
+        "cost": 7000000,
+        "energyOutput": 60,
+        "jobsCreated": 300,
+        "landImpact": "None",
+        "foodSecurityImpact": "None"
+      },
+      "Distributed Solar Arrays": {
+        "cost": 6000000,
+        "energyOutput": 45,
+        "jobsCreated": 400,
+        "landImpact": "Low",
+        "foodSecurityImpact": "Low"
+      },
+      "Agricultural Solar (Agrivoltaics)": {
+        "cost": 9000000,
+        "energyOutput": 100,
+        "jobsCreated": 250,
+        "landImpact": "Medium",
+        "foodSecurityImpact": "Low"
+      },
+      "Energy Storage Systems": {
+        "cost": 4000000,
+        "energyOutput": 0,
+        "jobsCreated": 150,
+        "landImpact": "Low",
+        "foodSecurityImpact": "None"
+      }
+    },
     "personaGoals": {
-      "Solar Developer": "Maximize renewable energy production",
-      "Local Farmer": "Preserve agricultural land and income",
-      "Environmental Activist": "Promote clean energy transition",
-      "County Commissioner": "Support sustainable development"
-    }
+      "City Council": "Wants climate goals met and a big win for clean energy",
+      "Farmers' Association": "Furious about losing farmland; worried about their future",
+      "Environmental NGO": "Supports renewables but demands biodiversity safeguards",
+      "Local Residents": "Split—cheaper power is attractive, but many fear higher food costs and land loss",
+      "Solar Developer": "Focused on profit and fast build-out; wants minimal restrictions",
+      "Food Security Advocates": "Deeply opposed to farmland loss; argue rooftop and brownfield projects first"
+    },
+    "briefing": "You've been tasked with evaluating whether Sunhaven should convert farmland into a solar farm or explore alternatives (rooftop panels, brownfield installations, or smaller distributed solar arrays). You must balance the need for clean energy with the region's food supply, rural economy, and community well-being.\n\nFunding is capped at $10M, though you may overspend up to 20%—but beware of long-term debt fallout.\n\nEnergy need: 150 MW shortfall projected in 5 years.\n\nSolar farm proposal: 400 acres, $8M cost, 120 MW output, 200 temporary construction jobs.\n\nAlternative 1: Rooftop panels program - $10M cost, 80 MW output, 500 jobs across installation & maintenance.\n\nAlternative 2: Brownfield solar - $7M cost, 60 MW output, requires soil cleanup first (delays 2 years).\n\nAgricultural value of land: Annual food output feeds 50,000 people, value $3M annually. Projected population growth: +15% in 10 years.\n\nYour task: weigh the trade-offs, allocate resources, and make the right call."
   },
   {
     "id": "3",
@@ -34,11 +160,72 @@
     "population": 25000,
     "baseline_jobs": 200,
     "background": "urban-scene",
+    "unlocked": true,
     "personaGoals": {
       "City Planner": "Create accessible green space for residents",
       "Real Estate Developer": "Maximize property value and tax revenue",
       "Community Organizer": "Ensure affordable housing and community benefits",
       "Environmental Engineer": "Restore contaminated land safely"
     }
+  },
+  {
+    "id": "4",
+    "title": "Wind farm in coastal area",
+    "summary": "Offshore wind farm proposal faces opposition from fishing communities and tourism industry.",
+    "population": 12000,
+    "baseline_jobs": 150,
+    "background": "coastal-scene",
+    "unlocked": false,
+    "personaGoals": {}
+  },
+  {
+    "id": "5",
+    "title": "Mining operation in mountains",
+    "summary": "Rare earth mining project in pristine mountain region. Environmentalists vs. economic development.",
+    "population": 6000,
+    "baseline_jobs": 100,
+    "background": "forest-scene",
+    "unlocked": false,
+    "personaGoals": {}
+  },
+  {
+    "id": "6",
+    "title": "Highway through wetlands",
+    "summary": "New highway route threatens critical wetland habitat. Transportation needs vs. conservation.",
+    "population": 18000,
+    "baseline_jobs": 180,
+    "background": "forest-scene",
+    "unlocked": false,
+    "personaGoals": {}
+  },
+  {
+    "id": "7",
+    "title": "Nuclear waste storage",
+    "summary": "Proposed nuclear waste storage facility in remote desert. Safety vs. economic benefits.",
+    "population": 3000,
+    "baseline_jobs": 60,
+    "background": "urban-scene",
+    "unlocked": false,
+    "personaGoals": {}
+  },
+  {
+    "id": "8",
+    "title": "Desalination plant",
+    "summary": "Large-scale desalination plant to address water shortages. Energy consumption vs. water security.",
+    "population": 22000,
+    "baseline_jobs": 220,
+    "background": "coastal-scene",
+    "unlocked": false,
+    "personaGoals": {}
+  },
+  {
+    "id": "9",
+    "title": "Carbon capture facility",
+    "summary": "Industrial carbon capture and storage project. Climate action vs. local environmental risks.",
+    "population": 15000,
+    "baseline_jobs": 160,
+    "background": "urban-scene",
+    "unlocked": false,
+    "personaGoals": {}
   }
 ]

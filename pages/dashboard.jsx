@@ -5,7 +5,7 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>Scenarios • Impact Sandbox</title>
+        <title>Scenarios • Impact Horizon</title>
       </Head>
       <ScenarioDashboard />
     </>

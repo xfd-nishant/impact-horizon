@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useScenarioContext } from "../contexts/ScenarioContext";
 
 export default function ChatPanel({ scenarioId, stakeholder, scenario }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const { context, getStakeholderResponse } = useScenarioContext();
 
   // Initialize with a greeting when stakeholder changes
   useEffect(() => {
     if (stakeholder) {
       const greetings = {
-        CEO: "Hello! I'm here to discuss the business opportunities this project presents.",
-        Villager: "Hi there. I'm concerned about how this will affect our community and environment.",
-        Mayor: "Good to meet you. I need to balance everyone's interests in this decision.",
-        Developer: "Greetings! Let me share the sustainable benefits of this renewable energy project.",
-        Farmer: "Hello. This land has been in my family for generations - I have concerns.",
-        "Local NGO": "Hi! I'm here to advocate for environmental protection and biodiversity."
+        "City Council": "We need to be very careful with this budget. $5M is a significant amount and we can't afford to waste it on unproven interventions.",
+        "Residents' Representative": "The vulnerable populations in Riverside are suffering the most from these heat waves and flood risks. We need immediate action.",
+        "Urban Developers": "Any interventions we choose need to be feasible within reasonable construction timelines. What's the implementation plan?",
+        "Environmental NGO": "This is our chance to implement truly sustainable solutions! Green roofs, rain gardens, and shade trees will create a healthier ecosystem.",
+        "Local Businesses": "We're worried about construction disrupting our operations and customer access. Please ensure minimal disruption."
       };
       
       const greeting = greetings[stakeholder] || `Hello, I'm ${stakeholder}. How can I help you understand my perspective?`;
@@ -46,33 +47,36 @@ export default function ChatPanel({ scenarioId, stakeholder, scenario }) {
     setLoading(true);
     
     try {
-      const res = await fetch("/api/simulate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      // Call the API directly with the user's message
+      const response = await fetch('/api/stakeholder-response', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          scenarioId,
-          persona: stakeholder,
-          message: text,
-          history: messages.concat(userMessage).map((m) => ({ 
-            role: m.from === "user" ? "user" : "assistant", 
-            content: m.text 
-          })),
-        }),
+          stakeholder,
+          userMessage: text.trim(),
+          scenario: scenario,
+          ...context?.getContext()
+        })
       });
-      
-      const json = await res.json();
-      const reply = json.reply || "I appreciate your question, but I'm having trouble responding right now.";
-      
-      setMessages(prev => [...prev, { 
-        id: Date.now() + 1, 
-        from: "agent", 
-        text: reply,
-        timestamp: Date.now()
-      }]);
+
+      if (response.ok) {
+        const data = await response.json();
+        setMessages(prev => [...prev, { 
+          id: Date.now() + 1, 
+          from: "agent", 
+          text: data.response,
+          timestamp: Date.now(),
+          mood: data.mood,
+          credibilityChange: data.credibilityChange
+        }]);
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       
     } catch (err) {
+      console.error('Error getting stakeholder response:', err);
       setMessages(prev => [...prev, { 
-        id: Date.now() + 2, 
+        id: Date.now() + 3, 
         from: "agent", 
         text: "I'm sorry, I'm having connection issues. Please try again.",
         timestamp: Date.now()
@@ -83,10 +87,10 @@ export default function ChatPanel({ scenarioId, stakeholder, scenario }) {
   }
 
   const quickPrompts = [
-    "What are your main concerns about this project?",
-    "How would this affect you personally?",
-    "What would be an ideal outcome for you?",
-    "Are there any alternatives you'd prefer?"
+    "What are your main concerns about the heat and flood challenges?",
+    "How should we prioritize our $5M budget?",
+    "What interventions do you think are most important?",
+    "How will this affect vulnerable populations?"
   ];
 
   return (

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Impact Sandbox</title>
+        <title>Impact Horizon</title>
       </Head>
       <EnterScreen />
     </>

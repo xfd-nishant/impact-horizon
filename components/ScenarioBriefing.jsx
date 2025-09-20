@@ -12,7 +12,7 @@ export default function ScenarioBriefing({ scenario }) {
   const [showContinue, setShowContinue] = useState(false);
   const router = useRouter();
 
-  const briefingText = `Welcome to your mission briefing, Commander.
+  const briefingText = scenario.briefing || `Welcome to your mission briefing, Commander.
 
 You are about to navigate one of the most critical environmental decisions of our time. The fate of ${scenario.population.toLocaleString()} lives hangs in the balance.
 
@@ -97,50 +97,58 @@ Are you ready to accept this responsibility?`;
               transition={{ duration: 0.8 }}
             >
               <div className="bg-forest-900/90 backdrop-blur-lg rounded-2xl p-8 border border-forest-600 shadow-2xl">
-                <h1 className="text-4xl font-display font-bold text-nature-glow mb-8">
+                <h1 className="text-4xl font-display font-bold text-cyber-glow mb-8">
                   MISSION BRIEFING
                 </h1>
-                <div className="text-lg text-forest-100 leading-relaxed min-h-[300px] flex items-center justify-center">
-                  <div className="typewriter text-left">
+                <div className="text-lg text-forest-100 leading-relaxed min-h-[300px] max-h-[400px] overflow-y-auto">
+                  <div className="typewriter text-left whitespace-pre-line">
                     {currentText}
                     {isTyping && <span className="animate-pulse">|</span>}
                   </div>
                 </div>
-                {showContinue && (
-                  <motion.button
-                    onClick={handleContinue}
-                    className="btn-primary mt-6 nature-glow"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    Continue to Details
-                  </motion.button>
-                )}
+                <div className="flex justify-center space-x-4 mt-6">
+                  {isTyping && (
+                    <motion.button
+                      onClick={() => {
+                        setCurrentText(briefingText);
+                        setCurrentIndex(briefingText.length);
+                        setIsTyping(false);
+                        setShowContinue(true);
+                      }}
+                      className="btn-secondary"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      Skip Briefing
+                    </motion.button>
+                  )}
+                  {showContinue && (
+                    <motion.button
+                      onClick={handleContinue}
+                      className="btn-primary nature-glow"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      Continue to Details
+                    </motion.button>
+                  )}
+                </div>
               </div>
             </motion.div>
           ) : (
             <>
               {/* Header */}
-              <motion.div 
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
+              <div className="text-center mb-12">
                 <h1 className="text-3xl font-display font-bold text-forest-100 mb-4">
                   Scenario Briefing
                 </h1>
                 <div className="w-24 h-1 bg-forest-600 mx-auto mb-8"></div>
-              </motion.div>
+              </div>
 
               {/* Scenario Details */}
-              <motion.div 
-                className="card p-8 mb-8 nature-float"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
+              <div className="card p-8 mb-8">
                 <h2 className="text-2xl font-semibold text-forest-100 mb-4 text-nature-glow">
                   {scenario.title}
                 </h2>
@@ -166,15 +174,10 @@ Are you ready to accept this responsibility?`;
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Stakeholders */}
-              <motion.div 
-                className="card p-8 mb-8 nature-float"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-              >
+              <div className="card p-8 mb-8">
                 <h3 className="text-xl font-semibold text-forest-100 mb-6 text-nature-glow">
                   Key Stakeholders
                 </h3>
@@ -206,15 +209,10 @@ Are you ready to accept this responsibility?`;
                     </motion.div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Instructions */}
-              <motion.div 
-                className="card p-8 mb-8 nature-float"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-              >
+              <div className="card p-8 mb-8">
                 <h3 className="text-xl font-semibold text-forest-100 mb-4 text-nature-glow">
                   Your Mission
                 </h3>
@@ -232,32 +230,23 @@ Are you ready to accept this responsibility?`;
                     <span>Make an informed decision about how to proceed</span>
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Action Buttons */}
-              <motion.div 
-                className="flex justify-between items-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-              >
-                <motion.button 
+              <div className="flex justify-between items-center">
+                <button 
                   onClick={() => router.push('/dashboard')}
                   className="btn-secondary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   Back to Scenarios
-                </motion.button>
-                <motion.button 
+                </button>
+                <button 
                   onClick={handleProceed}
                   className="btn-primary nature-glow"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   Begin Stakeholder Dialogue
-                </motion.button>
-              </motion.div>
+                </button>
+              </div>
             </>
           )}
 

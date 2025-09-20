@@ -16,7 +16,7 @@ export default function EnterScreen() {
 
   return (
     <>
-      <LoadingScreen isLoading={isLoading} message="Loading Impact Sandbox" />
+      <LoadingScreen isLoading={isLoading} message="Loading Impact Horizon" />
       
       <main className="min-h-screen bg-forest-950 flex items-center justify-center relative overflow-hidden">
         {/* Animated background particles */}
@@ -53,12 +53,12 @@ export default function EnterScreen() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-5xl sm:text-6xl font-display font-bold text-forest-100 mb-6 text-nature-glow"
+            className="text-5xl sm:text-6xl font-display font-bold text-forest-100 mb-6 text-cyber-glow"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
           >
-            Impact Sandbox
+            IMPACT HORIZON
           </motion.h1>
 
           <motion.div 

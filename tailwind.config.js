@@ -4,8 +4,9 @@ module.exports = {
     extend: {
       fontFamily: {
         'display': ['Orbitron', 'Exo 2', 'system-ui', 'sans-serif'],
-        'body': ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+        'body': ['Exo 2', 'Inter', 'system-ui', 'sans-serif'],
         'nature': ['Merriweather', 'Georgia', 'serif'],
+        'mono': ['Orbitron', 'Exo 2', 'monospace'],
       },
       colors: {
         forest: {
