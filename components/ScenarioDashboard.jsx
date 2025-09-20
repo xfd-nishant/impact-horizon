@@ -51,12 +51,14 @@ export default function ScenarioDashboard() {
 
         {/* Floating nature elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <NatureSprite type="tree" size="large" position="floating" className="absolute top-20 left-10" />
-          <NatureSprite type="flower" size="medium" position="floating" className="absolute top-40 right-16" />
-          <NatureSprite type="bird" size="small" position="floating" className="absolute top-60 left-1/4" />
+          <NatureSprite type="oak" size="large" position="floating" className="absolute top-20 left-10" />
+          <NatureSprite type="pine" size="medium" position="floating" className="absolute top-40 right-16" />
+          <NatureSprite type="robin" size="small" position="floating" className="absolute top-60 left-1/4" />
           <NatureSprite type="butterfly" size="small" position="floating" className="absolute bottom-40 right-1/4" />
           <NatureSprite type="cloud" size="medium" position="floating" className="absolute top-16 right-1/3" />
           <NatureSprite type="leaf" size="small" position="floating" className="absolute bottom-60 left-1/3" />
+          <NatureSprite type="rose" size="small" position="floating" className="absolute top-80 left-1/2" />
+          <NatureSprite type="bird" size="small" position="floating" className="absolute bottom-20 left-1/5" />
         </div>
 
         <motion.main 

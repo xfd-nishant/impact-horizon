@@ -4,45 +4,21 @@ export default function NatureSprite({ type = "tree", size = "medium", position 
   const getSpriteContent = () => {
     switch (type) {
       case "tree":
-        return (
-          <div className="relative">
-            {/* Trunk */}
-            <div className="w-2 h-8 bg-gradient-to-b from-amber-800 to-amber-900 rounded-t-full mx-auto"></div>
-            {/* Leaves */}
-            <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full -mt-4 -ml-3"></div>
-            <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-green-500 rounded-full -mt-2 -ml-1"></div>
-          </div>
-        );
+        return <div className="nature-sprite-oak w-full h-full"></div>;
+      case "pine":
+        return <div className="nature-sprite-pine w-full h-full"></div>;
+      case "oak":
+        return <div className="nature-sprite-oak w-full h-full"></div>;
       case "flower":
-        return (
-          <div className="relative">
-            {/* Stem */}
-            <div className="w-1 h-6 bg-green-600 mx-auto"></div>
-            {/* Flower */}
-            <div className="w-4 h-4 bg-gradient-to-br from-pink-400 to-pink-500 rounded-full -mt-2 -ml-1.5"></div>
-            <div className="w-2 h-2 bg-yellow-300 rounded-full -mt-3 -ml-0.5"></div>
-          </div>
-        );
+        return <div className="nature-sprite-rose w-full h-full"></div>;
+      case "rose":
+        return <div className="nature-sprite-rose w-full h-full"></div>;
       case "bird":
-        return (
-          <div className="relative">
-            {/* Body */}
-            <div className="w-3 h-2 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full"></div>
-            {/* Wings */}
-            <div className="w-2 h-1 bg-blue-300 rounded-full -mt-1 -ml-1 transform -rotate-12"></div>
-            <div className="w-2 h-1 bg-blue-300 rounded-full -mt-1 -ml-1 transform rotate-12"></div>
-          </div>
-        );
+        return <div className="nature-sprite-robin w-full h-full"></div>;
+      case "robin":
+        return <div className="nature-sprite-robin w-full h-full"></div>;
       case "butterfly":
-        return (
-          <div className="relative">
-            {/* Body */}
-            <div className="w-1 h-3 bg-amber-600 mx-auto"></div>
-            {/* Wings */}
-            <div className="w-3 h-2 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full -mt-1 -ml-1 transform -rotate-12"></div>
-            <div className="w-3 h-2 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full -mt-1 -ml-1 transform rotate-12"></div>
-          </div>
-        );
+        return <div className="nature-sprite-butterfly w-full h-full"></div>;
       case "leaf":
         return (
           <div className="w-4 h-2 bg-gradient-to-br from-green-400 to-green-500 rounded-full transform rotate-45"></div>

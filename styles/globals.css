@@ -168,6 +168,93 @@ body {
 /* Text selection */
 ::selection { background: rgba(34, 197, 94, 0.35); color: #ffffff; }
 
+/* Background image classes */
+.bg-forest-scene {
+  background-image: url('/images/backgrounds/forest-scene.svg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.bg-urban-scene {
+  background-image: url('/images/backgrounds/urban-environment.svg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.bg-coastal-scene {
+  background-image: url('/images/backgrounds/coastal-scene.svg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Icon styles */
+.icon-decision {
+  background-image: url('/images/icons/decision-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-environment {
+  background-image: url('/images/icons/environment-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-stakeholder {
+  background-image: url('/images/icons/stakeholder-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-impact {
+  background-image: url('/images/icons/impact-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Enhanced nature sprite styles */
+.nature-sprite-oak {
+  background-image: url('/images/sprites/nature/trees/oak-tree.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nature-sprite-pine {
+  background-image: url('/images/sprites/nature/trees/pine-tree.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nature-sprite-rose {
+  background-image: url('/images/sprites/nature/flowers/rose.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nature-sprite-robin {
+  background-image: url('/images/sprites/nature/animals/robin.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nature-sprite-butterfly {
+  background-image: url('/images/sprites/nature/animals/butterfly.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* Nature-themed animations */
 .nature-float {
   animation: nature-float 6s ease-in-out infinite;

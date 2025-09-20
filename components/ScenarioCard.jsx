@@ -5,10 +5,19 @@ import NatureSprite from "./NatureSprite";
 export default function ScenarioCard({ scenario }) {
   const getScenarioIcon = (id) => {
     switch (id) {
-      case 1: return "tree";
-      case 2: return "flower";
-      case 3: return "bird";
+      case "1": return "oak";
+      case "2": return "rose";
+      case "3": return "robin";
       default: return "leaf";
+    }
+  };
+
+  const getBackgroundClass = (background) => {
+    switch (background) {
+      case "forest-scene": return "bg-forest-scene";
+      case "coastal-scene": return "bg-coastal-scene";
+      case "urban-scene": return "bg-urban-scene";
+      default: return "bg-forest-scene";
     }
   };
 
@@ -24,8 +33,11 @@ export default function ScenarioCard({ scenario }) {
     >
       <Link
         href={`/scenario/${scenario.id}/briefing`}
-        className="block card p-6 group relative overflow-hidden"
+        className={`block card p-6 group relative overflow-hidden ${getBackgroundClass(scenario.background)}`}
       >
+        {/* Background overlay for readability */}
+        <div className="absolute inset-0 bg-forest-900/80 backdrop-blur-sm"></div>
+        
         {/* Background glow effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-forest-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -34,13 +46,16 @@ export default function ScenarioCard({ scenario }) {
         />
 
         {/* Scenario icon */}
-        <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+        <div className="absolute top-4 right-4 opacity-30 group-hover:opacity-60 transition-opacity duration-300">
           <NatureSprite 
             type={getScenarioIcon(scenario.id)} 
             size="medium" 
             position="pulsing" 
           />
         </div>
+
+        {/* Decision icon */}
+        <div className="absolute top-4 left-4 w-8 h-8 icon-decision opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
 
         <div className="mb-4 relative z-10">
           <div className="text-xs text-forest-400 uppercase tracking-wider mb-2">

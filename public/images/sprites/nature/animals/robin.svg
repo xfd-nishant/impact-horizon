@@ -1,0 +1,37 @@
+<svg width="32" height="24" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E53E3E;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A5568;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2D3748;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Body -->
+  <ellipse cx="16" cy="14" rx="8" ry="6" fill="url(#bodyGradient)"/>
+  
+  <!-- Head -->
+  <circle cx="16" cy="8" r="5" fill="url(#bodyGradient)"/>
+  
+  <!-- Beak -->
+  <polygon points="16,6 14,4 18,4" fill="#FFD700"/>
+  
+  <!-- Eye -->
+  <circle cx="18" cy="7" r="1" fill="black"/>
+  <circle cx="18.5" cy="6.5" r="0.5" fill="white"/>
+  
+  <!-- Wings -->
+  <ellipse cx="12" cy="12" rx="4" ry="3" fill="url(#wingGradient)" transform="rotate(-20 12 12)"/>
+  <ellipse cx="20" cy="12" rx="4" ry="3" fill="url(#wingGradient)" transform="rotate(20 20 12)"/>
+  
+  <!-- Tail -->
+  <ellipse cx="8" cy="16" rx="3" ry="2" fill="url(#wingGradient)" transform="rotate(-45 8 16)"/>
+  <ellipse cx="24" cy="16" rx="3" ry="2" fill="url(#wingGradient)" transform="rotate(45 24 16)"/>
+  
+  <!-- Legs -->
+  <line x1="14" y1="20" x2="14" y2="24" stroke="#FFD700" stroke-width="1"/>
+  <line x1="18" y1="20" x2="18" y2="24" stroke="#FFD700" stroke-width="1"/>
+</svg>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LoadingScreen from "./LoadingScreen";
+import StakeholderSprite from "./StakeholderSprite";
 
 export default function ScenarioBriefing({ scenario }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,12 +50,26 @@ Are you ready to accept this responsibility?`;
   };
 
   const stakeholders = Object.keys(scenario.personaGoals || {});
+  
+  const getStakeholderType = (stakeholder) => {
+    const name = stakeholder.toLowerCase();
+    if (name.includes('scientist') || name.includes('engineer')) return 'scientist';
+    if (name.includes('manager') || name.includes('developer')) return 'manager';
+    if (name.includes('resident') || name.includes('community')) return 'resident';
+    if (name.includes('mayor') || name.includes('commissioner')) return 'mayor';
+    if (name.includes('farmer')) return 'farmer';
+    if (name.includes('activist')) return 'activist';
+    return 'scientist';
+  };
 
   return (
     <>
       <LoadingScreen isLoading={isLoading} message="Loading Stakeholder Panel" />
       
-      <div className="min-h-screen bg-forest-950 relative overflow-hidden">
+      <div className={`min-h-screen relative overflow-hidden ${scenario.background ? `bg-${scenario.background}` : 'bg-forest-950'}`}>
+        {/* Background overlay for readability */}
+        <div className="absolute inset-0 bg-forest-950/70 backdrop-blur-sm"></div>
+        
         {/* Animated background particles */}
         <div className="particle-bg">
           {[...Array(20)].map((_, i) => (
@@ -173,10 +188,12 @@ Are you ready to accept this responsibility?`;
                       transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
                       whileHover={{ scale: 1.02 }}
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-forest-600 to-forest-700 rounded-lg flex items-center justify-center nature-glow">
-                        <span className="text-lg font-semibold text-forest-100">
-                          {stakeholder.charAt(0)}
-                        </span>
+                      <div className="w-16 h-16 bg-gradient-to-br from-forest-600 to-forest-700 rounded-lg flex items-center justify-center nature-glow p-2">
+                        <StakeholderSprite 
+                          type={getStakeholderType(stakeholder)}
+                          size="small"
+                          position="pulsing"
+                        />
                       </div>
                       <div>
                         <div className="font-semibold text-forest-100 mb-1">

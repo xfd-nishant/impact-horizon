@@ -2,6 +2,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import LoadingScreen from "./LoadingScreen";
+import NatureSprite from "./NatureSprite";
 
 export default function EnterScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,24 +37,13 @@ export default function EnterScreen() {
 
         {/* Floating nature elements */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Trees */}
-          <div className="absolute top-20 left-10 nature-float" style={{ animationDelay: '0s' }}>
-            <div className="w-8 h-16 bg-gradient-to-b from-forest-700 to-forest-800 rounded-t-full"></div>
-            <div className="w-12 h-12 bg-gradient-to-br from-forest-500 to-forest-600 rounded-full -mt-6 -ml-2"></div>
-          </div>
-          <div className="absolute top-32 right-16 nature-float" style={{ animationDelay: '2s' }}>
-            <div className="w-6 h-12 bg-gradient-to-b from-forest-700 to-forest-800 rounded-t-full"></div>
-            <div className="w-10 h-10 bg-gradient-to-br from-forest-500 to-forest-600 rounded-full -mt-5 -ml-2"></div>
-          </div>
-          <div className="absolute bottom-32 left-20 nature-float" style={{ animationDelay: '4s' }}>
-            <div className="w-10 h-20 bg-gradient-to-b from-forest-700 to-forest-800 rounded-t-full"></div>
-            <div className="w-16 h-16 bg-gradient-to-br from-forest-500 to-forest-600 rounded-full -mt-8 -ml-3"></div>
-          </div>
-
-          {/* Floating leaves */}
-          <div className="absolute top-40 left-1/4 w-4 h-4 bg-forest-400 rounded-full nature-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-60 right-1/4 w-3 h-3 bg-forest-500 rounded-full nature-float" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-40 left-1/3 w-5 h-5 bg-forest-300 rounded-full nature-float" style={{ animationDelay: '5s' }}></div>
+          <NatureSprite type="oak" size="large" position="floating" className="absolute top-20 left-10" style={{ animationDelay: '0s' }} />
+          <NatureSprite type="pine" size="medium" position="floating" className="absolute top-32 right-16" style={{ animationDelay: '2s' }} />
+          <NatureSprite type="oak" size="xlarge" position="floating" className="absolute bottom-32 left-20" style={{ animationDelay: '4s' }} />
+          <NatureSprite type="rose" size="small" position="floating" className="absolute top-40 left-1/4" style={{ animationDelay: '1s' }} />
+          <NatureSprite type="robin" size="small" position="floating" className="absolute top-60 right-1/4" style={{ animationDelay: '3s' }} />
+          <NatureSprite type="butterfly" size="small" position="floating" className="absolute bottom-40 left-1/3" style={{ animationDelay: '5s' }} />
+          <NatureSprite type="cloud" size="medium" position="floating" className="absolute top-16 right-1/3" style={{ animationDelay: '1.5s' }} />
         </div>
 
         <motion.div 
